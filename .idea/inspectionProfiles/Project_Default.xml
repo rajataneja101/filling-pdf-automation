@@ -6,6 +6,8 @@
         <list>
           <option value="forge_fdf" />
           <option value="scribus" />
+          <option value="tkFileDialog" />
+          <option value="tkinter.askopenfilename" />
         </list>
       </option>
     </inspection_tool>
