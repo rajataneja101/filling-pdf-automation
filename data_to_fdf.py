@@ -26,7 +26,8 @@ def func2():
     for value in r_list:
         print(str(i) + " " + value)
         i += 1
-    i=0
+
+    i = 0
     for value in dictfields:
         dictfields[value]=r_list[i]
         i += 1
