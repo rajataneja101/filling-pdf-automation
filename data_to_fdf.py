@@ -26,16 +26,21 @@ def func2():
     for value in r_list:
         print(str(i) + " " + value)
         i += 1
-    fields = [(r_list[0], r_json['lastName']),
-              (r_list[1], r_json['firstName']),
-              (r_list[2], r_json['date']),
-              (r_list[3], 'Yes'),
-              (r_list[4], 'Yes'),
-              (r_list[5], 'Yes'),
-              (r_list[6],'Yes'),
-              (r_list[7],'Yes')
+    i=0
+    for value in dictfields:
+        dictfields[value]=r_list[i]
+        i += 1
+    print(dictfields)
+    fields = [(dictfields['Your_Last_Name'], r_json['lastName']),
+              (dictfields['Your_First_Name'], r_json['firstName']),
+              (dictfields['Date'], r_json['date']),
+              (dictfields['CheckBox1'], 'Yes'),
+              (dictfields['CheckBox2'], 'Yes'),
+              (dictfields['CheckBox3'], 'Yes'),
+              (dictfields['CheckBox4'], 'Yes'),
+              (dictfields['CheckBox5'], 'Yes')
               ]  # inserting data into fields
-    fdf = forge_fdf("", fields, [], [], [], [])  # updating the fields
+    fdf = forge_fdf("", fields, [])  # updating the fields
     fdf_file = open("data.fdf", "wb")
     fdf_file.write(fdf)  # writing into a fdf file
     fdf_file.close()
