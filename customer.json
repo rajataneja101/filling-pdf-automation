@@ -3,6 +3,7 @@
      "firstName": "Rajat",
      "lastName": "Taneja",
      "date": "25-01-1996",
+     "father":"Pradeep Taneja",
      "address":
      {
          "streetAddress": "21 2nd Street",

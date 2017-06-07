@@ -6,18 +6,24 @@ import json
 import pprint
 from fdfgen import forge_fdf
 import PyPDF2
-
+import argparse
 
 def func2():
     """
     Converts pdf form to fdf data
     """
-    pdf_file = input("PDF file")
-    j_file = input("JSON file")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pdf_file", help="display a square of a given number",
+                        type=str)
+    parser.add_argument("json_file", help="display a square of a given number",
+                        type=str)
+    args = parser.parse_args()
+    print("PDF File:" + args.pdf_file)
+    print("JSON File:" + args.json_file)
     prettyp = pprint.PrettyPrinter(indent=4)
-    r_json = json.loads(open(j_file).read())
+    r_json = json.loads(open(args.json_file).read())
     prettyp.pprint(r_json)  # for checking the JSON data
-    pdfread = PyPDF2.PdfFileReader(open(pdf_file, 'rb'), strict=False)  # reading the pdf file
+    pdfread = PyPDF2.PdfFileReader(open(args.pdf_file, 'rb'), strict=False)  # reading the pdf file
     dictfields = pdfread.getFields()
     prettyp.pprint(dictfields)  # for checking the pdf fields
     r_list = list(dictfields.keys())  #fields dictonary to list
@@ -39,7 +45,7 @@ def func2():
               (dictfields['CheckBox2'], 'Yes'),
               (dictfields['CheckBox3'], 'Yes'),
               (dictfields['CheckBox4'], 'Yes'),
-              (dictfields['CheckBox5'], 'Yes')
+              (dictfields['CheckBox5'], 'Yes'),
               ]  # inserting data into fields
     fdf = forge_fdf("", fields, [])  # updating the fields
     fdf_file = open("data.fdf", "wb")
